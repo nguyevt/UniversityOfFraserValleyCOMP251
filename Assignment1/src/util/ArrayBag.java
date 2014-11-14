@@ -32,7 +32,6 @@ public class ArrayBag<E> implements Bag<E> {
 		size++;
 	}
 
-	@Override
 	public void addAll(Bag<E> other) {
 		Iterator<E> iterator = other.iterator();
 		while (iterator.hasNext()) {
@@ -40,7 +39,6 @@ public class ArrayBag<E> implements Bag<E> {
 		}
 	}
 
-	@Override
 	public boolean contains(E item) {
 		Iterator<E> iterator = this.iterator();
 		while (iterator.hasNext()) {
@@ -51,7 +49,6 @@ public class ArrayBag<E> implements Bag<E> {
 		return false;
 	}
 
-	@Override
 	public boolean equals(Bag<E> other) {
 		if (other.size() != this.size()) {
 			return false;
@@ -71,17 +68,14 @@ public class ArrayBag<E> implements Bag<E> {
 		return true;
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
-	@Override
 	public Iterator<E> iterator() {
 		return new BagIterator<E>(this.bag, this.size);
 	}
 
-	@Override
 	public E remove(E item) throws NoSuchElementException {
 		for (int i = 0; i < size(); i++) {
 			if (bag[i].equals(item)) {
@@ -94,7 +88,6 @@ public class ArrayBag<E> implements Bag<E> {
 		throw new NoSuchElementException();
 	}
 
-	@Override
 	public E removeRandom() throws BagException {
 		if (isEmpty()) {
 			throw new BagException();
@@ -108,12 +101,10 @@ public class ArrayBag<E> implements Bag<E> {
 		}
 	}
 
-	@Override
 	public int size() {
 		return this.size;
 	}
 
-	@Override
 	public Bag<E> union(Bag<E> other) {
 		Bag<E> bag = new ArrayBag();
 		bag.addAll(other);
@@ -147,12 +138,10 @@ public class ArrayBag<E> implements Bag<E> {
 			this.current = 0;
 		}
 
-		@Override
 		public boolean hasNext() {
 			return current < size;
 		}
 
-		@Override
 		public E next() {
 			if (hasNext()) {
 				current++;
@@ -162,7 +151,6 @@ public class ArrayBag<E> implements Bag<E> {
 			}
 		}
 
-		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
